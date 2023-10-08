@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 14:00:15 by agvincen          #+#    #+#             */
-/*   Updated: 2023/09/30 17:04:45 by agvincen         ###   ########.fr       */
+/*   Updated: 2023/10/08 12:30:27 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_stack
 
 t_stack				*ft_stack_new(t_stack *stack, int value, int pos);
 void				ft_index(t_stack *stack);
-void				ft_exit(t_stack **stack_a, t_stack **stack_b, char **argv, int argc);
+void				ft_exit(t_stack **stack_a, t_stack **stack_b);
 int					is_integer(char *str);
 int					is_duplicate(t_stack *stack, int num);
 void				ft_clear(t_stack **stack);

@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 13:59:52 by agvincen          #+#    #+#             */
-/*   Updated: 2023/10/02 17:51:25 by agvincen         ###   ########.fr       */
+/*   Updated: 2023/10/08 12:31:26 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,13 @@
 }
  */
 
-void	ft_exit(t_stack **stack_a, t_stack **stack_b, char **argv, int argc)
+void	ft_exit(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_printf("Error\n");
 	if (stack_a)
 		ft_clear(stack_a);
 	if (stack_b)
 		ft_clear(stack_b);
-	if (argc == 2)
-		free_array(argv);
 	exit(1);
 }
 
@@ -60,13 +58,13 @@ void ft_control(char **argv, t_stack **stack_a, t_stack **stack_b, int argc)
     while (argv[i])
 	{
         if (is_integer(argv[i]) == 0)
-            ft_exit(stack_a, stack_b, argv, argc);
+            ft_exit(stack_a, stack_b);
 		num = ft_atoi(argv[i]);
         if (num > 2147483647 || num < -2147483648)
-            ft_exit(stack_a, stack_b, argv, argc);
+            ft_exit(stack_a, stack_b);
         *stack_a = ft_stack_new(*stack_a, num, i);
         if (is_duplicate(*stack_a, num) > 1)
-            ft_exit(stack_a, stack_b, argv, argc);
+            ft_exit(stack_a, stack_b);
         i++;
     }
 	if (argc == 2)
