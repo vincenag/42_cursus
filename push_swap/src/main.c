@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 13:59:52 by agvincen          #+#    #+#             */
-/*   Updated: 2023/10/08 12:31:26 by agvincen         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:05:16 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 {
 	system("leaks -q push_swap");
 }
- */
+	atexit(ft_leaks); */
 
 void	ft_exit(t_stack **stack_a, t_stack **stack_b)
 {
@@ -34,39 +34,39 @@ static void	push_swap(t_stack **stack_a, t_stack **stack_b, int i)
 		return ;
 	if (i == 1)
 		return ;
-	if (i == 2)
-		sa(stack_a);	
-	if (i == 3)
+	else if (i == 2)
+		sa(stack_a);
+	else if (i == 3)
 		ft_three(stack_a);
 	else
 		ft_many(stack_a, stack_b);
 }
 
-void ft_control(char **argv, t_stack **stack_a, t_stack **stack_b, int argc) 
+void	ft_control(char **argv, t_stack **stack_a, t_stack **stack_b, int argc)
 {
-    int 		i;
+	int			i;
 	long int	num;
 	char		**array;
 
 	i = 1;
-    if (argc == 2) 
+	if (argc == 2)
 	{	
-        array = ft_split(argv[1], ' ');
+		array = ft_split(argv[1], ' ');
 		argv = array;
-        i = 0;
-    }
-    while (argv[i])
+		i = 0;
+	}
+	while (argv[i])
 	{
-        if (is_integer(argv[i]) == 0)
-            ft_exit(stack_a, stack_b);
+		if (is_integer(argv[i]) == 0)
+			ft_exit(stack_a, stack_b);
 		num = ft_atoi(argv[i]);
-        if (num > 2147483647 || num < -2147483648)
-            ft_exit(stack_a, stack_b);
-        *stack_a = ft_stack_new(*stack_a, num, i);
-        if (is_duplicate(*stack_a, num) > 1)
-            ft_exit(stack_a, stack_b);
-        i++;
-    }
+		if (num > 2147483647 || num < -2147483648)
+			ft_exit(stack_a, stack_b);
+		*stack_a = ft_stack_new(*stack_a, num);
+		if (is_duplicate(*stack_a, num) > 1)
+			ft_exit(stack_a, stack_b);
+		i++;
+	}
 	if (argc == 2)
 		free_array(argv);
 }
@@ -76,14 +76,14 @@ int	main(int argc, char **argv)
 	t_stack		*stack_a;
 	t_stack		*stack_b;
 
-	//atexit(ft_leaks);
 	if (argc < 2)
 		return (0);
 	stack_a = NULL;
 	stack_b = NULL;
 	ft_control(argv, &stack_a, &stack_b, argc);
 	ft_index(stack_a);
-	push_swap(&stack_a, &stack_b, argc - 1);
+	ft_pos(&stack_a);
+	push_swap(&stack_a, &stack_b, ft_list_size(&stack_a));
 	ft_clear(&stack_a);
 	ft_clear(&stack_b);
 	return (0);

@@ -6,20 +6,19 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:16:59 by agvincen          #+#    #+#             */
-/*   Updated: 2023/09/27 19:16:09 by agvincen         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:42:52 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_stack	*ft_stack_new(t_stack *stack, int value, int pos)
+t_stack	*ft_stack_new(t_stack *stack, int value)
 {
 	t_stack	*new;
 	t_stack	*current;
 
 	new = ft_calloc(1, sizeof(t_stack));
 	new->value = value;
-	new->pos = pos;
 	new->next = NULL;
 	if (stack == NULL)
 		return (new);

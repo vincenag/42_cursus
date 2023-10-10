@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 12:32:01 by agvincen          #+#    #+#             */
-/*   Updated: 2023/10/02 17:51:52 by agvincen         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:48:40 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,32 +45,33 @@ int	is_integer(char *str)
 	int	i;
 
 	i = 0;
-    if (str[i] == '-' && (str[i + 1]) == '\0')
-        return (0);
-    if (str[i] == '-')
-        i++;
-    while (str[i]) 
+	if (str[i] == '-' && (str[i + 1]) == '\0')
+		return (0);
+	if (str[i] == '-')
+		i++;
+	while (str[i])
 	{
-        if (str[i] < '0' || str[i] > '9')
-            return (0);
-    	i++;
-    }
-    return (1);
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
-int	is_duplicate(t_stack *stack, int num) 
+int	is_duplicate(t_stack *stack, int num)
 {
-    t_stack *current = stack;
+	t_stack	*current;
 	int		i;
 
+	current = stack;
 	i = 0;
-    while (current) 
+	while (current)
 	{
-        if (current->value == num)
-            i++;
-        current = current->next;
-    }
-    return (i);
+		if (current->value == num)
+			i++;
+		current = current->next;
+	}
+	return (i);
 }
 
 t_stack	*stack_bottom(t_stack *stack)

@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:49:13 by agvincen          #+#    #+#             */
-/*   Updated: 2023/09/19 16:42:23 by agvincen         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:47:23 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 long int	ft_atoi(const char *str)
 {
 	long int	num_base;
-	int				i;
-	int				np;
+	int			i;
+	int			np;
 
 	np = 1;
 	i = 0;
