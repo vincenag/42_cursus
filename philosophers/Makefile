@@ -6,39 +6,52 @@
 #    By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/07 10:50:45 by agvincen          #+#    #+#              #
-#    Updated: 2023/12/07 13:35:02 by agvincen         ###   ########.fr        #
+#    Updated: 2023/12/09 13:48:36 by agvincen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
-FILES = src/main.c\
-		src/utils.c\
-
-OBJECTS = $(FILES:.c=.o)
-
+SRC_DIR = src
+OBJ_DIR = obj
 CC 		= gcc
 CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
 
+FILES = $(SRC_DIR)/main.c\
+		$(SRC_DIR)/utils.c\
+
+OBJECTS = $(FILES:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+
 ORANGE = \033[1;38;5;208m
+GREEN	= \033[32;1m
+CIAN	= \033[36m
+BLUE	= \033[1;38;5;27m
 RESET = \033[0m
 U_LINE = \033[4m
 YELLOW = \033[1;38;5;226m
+END 	= \033[0m
 
 
-all: $(NAME)
+all: $(OBJ_DIR) $(NAME)
 	@echo "\n$(ORANGE)$(U_LINE)⭐️ $(NAME): Compiled ⭐️$(RESET) \n"
 
-$(OBJECTS): %.o: %.c
-	@echo "Compiling: $(notdir $<)"
-	@$(CC) $(CFLAGS) -o $@ -c $< || (echo "Compilation failed for $<" && false)
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
 
+$(OBJECTS): $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@echo "$(BLUE)Philo Compiling:$(END) $(notdir $<)"
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJECTS)
-	@$(CC) $(OBJECTS) -o $(NAME)
+	@$(CC) $(OBJECTS) $(CFLAGS) -g -o $@ 
+	@echo "\n$(GREEN)[Compiled $(CIAN) $@ $(GREEN)successfully]\n"
+
+#-fsanitize=address
 
 clean:
-	@rm -rf $(OBJECTS)
+	@rm -rf $(OBJ_DIR)
+	@echo "$(GREEN)[Removed $(CIAN) $(NAME) $(GREEN)successfully]\n$(END)"
 
 fclean: clean
 	@rm -f $(NAME)
