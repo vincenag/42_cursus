@@ -6,7 +6,7 @@
 #    By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/07 10:50:45 by agvincen          #+#    #+#              #
-#    Updated: 2023/12/09 13:48:36 by agvincen         ###   ########.fr        #
+#    Updated: 2023/12/19 10:22:13 by agvincen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,12 @@ CC 		= gcc
 CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
 
 FILES = $(SRC_DIR)/main.c\
+		$(SRC_DIR)/check_args.c\
+		$(SRC_DIR)/init.c\
+		$(SRC_DIR)/philos.c\
+		$(SRC_DIR)/philo_check.c\
 		$(SRC_DIR)/utils.c\
+		$(SRC_DIR)/exit.c\
 
 OBJECTS = $(FILES:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
@@ -44,10 +49,10 @@ $(OBJECTS): $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJECTS)
-	@$(CC) $(OBJECTS) $(CFLAGS) -g -o $@ 
+	@$(CC) $(OBJECTS) $(CFLAGS) -fsanitize=thread -g3 -o $@ 
 	@echo "\n$(GREEN)[Compiled $(CIAN) $@ $(GREEN)successfully]\n"
 
-#-fsanitize=address
+#-fsanitize=thread -g3
 
 clean:
 	@rm -rf $(OBJ_DIR)

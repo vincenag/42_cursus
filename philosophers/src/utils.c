@@ -5,66 +5,38 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 13:33:43 by agvincen          #+#    #+#             */
-/*   Updated: 2023/12/07 13:42:19 by agvincen         ###   ########.fr       */
+/*   Created: 2023/12/14 16:18:10 by agvincen          #+#    #+#             */
+/*   Updated: 2023/12/19 10:20:39 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-long int	ft_atoi(const char *str)
+uint64_t    ft_get_time(void)
 {
-	long int	num_base;
-	int			i;
-	int			np;
+    struct timeval	time;
 
-	np = 1;
-	i = 0;
-	num_base = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-		if (str[i++] == '-')
-			np = -1;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		num_base = num_base * 10 + (str[i] - '0');
-		i++;
-	}
-	return (np * num_base);
+    gettimeofday(&time, NULL);
+    return ((time.tv_sec * (uint64_t)1000) + (time.tv_usec / 1000));
 }
 
-int	ft_isnum(char *str)
+void    ft_usleep(uint64_t time)
 {
-	while (*str)
-	{
-		if (*str < '0' || *str > '9')
-		{
-			printf("All characters must be positive digits\n");
-			return (EXIT_FAILURE);
-		}
-		str++;
-	}
-	return (0);
+    uint64_t    total_time;
+
+    total_time = ft_get_time() + time;
+    while (ft_get_time() < total_time)
+        usleep(10);
 }
 
-int	ft_check_args(char	**argv)
+void    ft_print(t_philo *philo, char *status)
 {
-	int		i;
-	long	temp;
-
-	i = 1;
-	while (argv[i])
-	{
-		if (ft_isnum(argv[i]))
-			return (EXIT_FAILURE);
-		temp = ft_atoi (argv[i]);
-		if (temp > INT_MAX)
-		{
-			printf("argument %s is greater than INT MAX\n", argv[i]);
-			return (EXIT_FAILURE);
-		}
-		i++;
-	}
-	return (0);
+    pthread_mutex_lock(&philo->table->print_mutex);
+    if (ft_check_death(philo))
+    {
+        pthread_mutex_unlock(&philo->table->print_mutex);
+        return ;
+    }
+    printf("%lu %d %s", ft_get_time() - philo->table->start_time, philo->id, status);
+    pthread_mutex_unlock(&philo->table->print_mutex);
 }
