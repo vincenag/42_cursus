@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:09:19 by agvincen          #+#    #+#             */
-/*   Updated: 2023/12/19 12:37:20 by agvincen         ###   ########.fr       */
+/*   Updated: 2023/12/21 10:58:33 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,17 @@ int	ft_init_mutex(t_table *table)
 	return (EXIT_SUCCESS);
 }
 
-//falta chequear los limites para cada argumento
-t_table *ft_init_table(char **argv)
+int	check_min_max(t_table *table)
 {
-	t_table	*table;
+	if (table->nb_philo < 1 || table->nb_philo > 200)
+		return (EXIT_FAILURE);
+	if (table->time_to_die < 60 || table->time_to_eat < 60 || table->time_to_sleep < 60)
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
+}
 
-	table = malloc(sizeof(t_table));
-	if (!table)
-		return (NULL);
+void	init_input_args(t_table *table, char **argv)
+{
 	table->nb_philo = ft_atoi(argv[1]);
 	table->time_to_die = ft_atoi(argv[2]);
 	table->time_to_eat = ft_atoi(argv[3]);
@@ -53,6 +56,22 @@ t_table *ft_init_table(char **argv)
 		table->nb_meals = ft_atoi(argv[5]);
 	else
 		table->nb_meals = -1;
+}
+
+t_table *ft_init_table(char **argv)
+{
+	t_table	*table;
+
+	table = malloc(sizeof(t_table));
+	if (!table)
+		return (NULL);
+	init_input_args(table, argv);
+	if (check_min_max(table))
+	{
+		printf("Error: Arguments out of limits\n");
+		free(table);
+		return (NULL);
+	}
 	table->isdead = 0;
 	table->x_meals = 0;
 	if (ft_init_mutex(table))
