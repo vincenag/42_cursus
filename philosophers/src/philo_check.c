@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:41:04 by agvincen          #+#    #+#             */
-/*   Updated: 2023/12/22 22:41:36 by agvincen         ###   ########.fr       */
+/*   Updated: 2023/12/22 22:48:32 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	ft_check_meals(t_philo *philo)
 	pthread_mutex_unlock(&philo->table->check_meal_mutex);
 	return (0);
 }
+
 int	print_death(t_table *table, t_philo *philos, int i)
 {
 	pthread_mutex_lock(&philos[i].last_meal_mutex);
