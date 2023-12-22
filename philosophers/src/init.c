@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 15:09:19 by agvincen          #+#    #+#             */
-/*   Updated: 2023/12/21 10:58:33 by agvincen         ###   ########.fr       */
+/*   Updated: 2023/12/22 21:40:42 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_init_mutex(t_table *table)
 {
-	int i;
+	int	i;
 
 	table->forks_mutex = malloc(sizeof(pthread_mutex_t) * table->nb_philo);
 	if (!table->forks_mutex)
@@ -29,7 +29,9 @@ int	ft_init_mutex(t_table *table)
 		}
 		i++;
 	}
-	if (pthread_mutex_init(&table->print_mutex, NULL) || pthread_mutex_init(&table->check_meal_mutex, NULL) || pthread_mutex_init(&table->isdead_mutex, NULL))
+	if (pthread_mutex_init(&table->print_mutex, NULL)
+		|| pthread_mutex_init(&table->check_meal_mutex, NULL)
+		|| pthread_mutex_init(&table->isdead_mutex, NULL))
 	{
 		free(table->forks_mutex);
 		return (EXIT_FAILURE);
@@ -41,7 +43,8 @@ int	check_min_max(t_table *table)
 {
 	if (table->nb_philo < 1 || table->nb_philo > 200)
 		return (EXIT_FAILURE);
-	if (table->time_to_die < 60 || table->time_to_eat < 60 || table->time_to_sleep < 60)
+	if (table->time_to_die < 60 || table->time_to_eat < 60
+		|| table->time_to_sleep < 60)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
@@ -58,7 +61,7 @@ void	init_input_args(t_table *table, char **argv)
 		table->nb_meals = -1;
 }
 
-t_table *ft_init_table(char **argv)
+t_table	*ft_init_table(char **argv)
 {
 	t_table	*table;
 
@@ -73,7 +76,7 @@ t_table *ft_init_table(char **argv)
 		return (NULL);
 	}
 	table->isdead = 0;
-	table->x_meals = 0;
+	table->x_done = 0;
 	if (ft_init_mutex(table))
 	{
 		free(table);
@@ -84,7 +87,7 @@ t_table *ft_init_table(char **argv)
 
 int	ft_init_philos(t_philo *philos, t_table *table)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (i < table->nb_philo)
@@ -92,9 +95,16 @@ int	ft_init_philos(t_philo *philos, t_table *table)
 		philos[i].id = i + 1;
 		philos[i].left_fork = i;
 		philos[i].right_fork = (i + 1) % table->nb_philo;
-		philos[i].last_meal = ft_get_time();
+		philos[i].last_meal = 0;
 		philos[i].x_eaten = 0;
 		philos[i].table = table;
+		if (pthread_mutex_init(&philos[i].last_meal_mutex, NULL))
+		{
+			free(philos);
+			free(table->forks_mutex);
+			free(table);
+			return (EXIT_FAILURE);
+		}
 		i++;
 	}
 	return (EXIT_SUCCESS);

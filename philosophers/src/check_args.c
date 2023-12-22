@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:33:43 by agvincen          #+#    #+#             */
-/*   Updated: 2023/12/07 13:42:19 by agvincen         ###   ########.fr       */
+/*   Updated: 2023/12/22 21:40:30 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_isnum(char *str)
 	return (0);
 }
 
-int	ft_check_args(char	**argv)
+int	ft_check_args(char **argv)
 {
 	int		i;
 	long	temp;
@@ -58,7 +58,7 @@ int	ft_check_args(char	**argv)
 	{
 		if (ft_isnum(argv[i]))
 			return (EXIT_FAILURE);
-		temp = ft_atoi (argv[i]);
+		temp = ft_atoi(argv[i]);
 		if (temp > INT_MAX)
 		{
 			printf("argument %s is greater than INT MAX\n", argv[i]);

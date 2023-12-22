@@ -6,7 +6,7 @@
 #    By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/07 10:50:45 by agvincen          #+#    #+#              #
-#    Updated: 2023/12/19 10:22:13 by agvincen         ###   ########.fr        #
+#    Updated: 2023/12/22 22:44:47 by agvincen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,10 +49,11 @@ $(OBJECTS): $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJECTS)
-	@$(CC) $(OBJECTS) $(CFLAGS) -fsanitize=thread -g3 -o $@ 
+	@$(CC) $(OBJECTS) $(CFLAGS) -fsanitize=address -g3 -o $@ 
 	@echo "\n$(GREEN)[Compiled $(CIAN) $@ $(GREEN)successfully]\n"
 
-#-fsanitize=thread -g3
+#-fsanitize=thread
+#-fsanitize=address
 
 clean:
 	@rm -rf $(OBJ_DIR)

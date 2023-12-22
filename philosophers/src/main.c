@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:49:26 by agvincen          #+#    #+#             */
-/*   Updated: 2023/12/19 09:49:53 by agvincen         ###   ########.fr       */
+/*   Updated: 2023/12/22 22:42:47 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 
 	if (argc < 5 || argc > 6)
 	{
-		printf ("Number of arguments should be 4 or 5\n");
+		printf("Number of arguments should be 4 or 5\n");
 		return (EXIT_FAILURE);
 	}
 	if (ft_check_args(argv))
