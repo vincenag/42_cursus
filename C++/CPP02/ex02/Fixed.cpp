@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: agustin <agustin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 15:32:21 by agvincen          #+#    #+#             */
-/*   Updated: 2024/04/01 21:13:13 by agustin          ###   ########.fr       */
+/*   Created: 2024/04/01 22:02:54 by agustin           #+#    #+#             */
+/*   Updated: 2024/04/02 18:34:19 by agustin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "Fixed.hpp"
 
@@ -73,3 +74,100 @@ std::ostream &operator<<(std::ostream &o, Fixed const &val)
     o << val.toFloat();
     return o;
 }
+
+bool Fixed::operator>(const Fixed &rhs) const
+{
+    return this->getRawBits() > rhs.getRawBits();
+}
+
+bool Fixed::operator<(const Fixed &rhs) const
+{
+    return this->getRawBits() < rhs.getRawBits();
+}
+
+bool Fixed::operator>=(const Fixed &rhs) const
+{
+    return this->getRawBits() >= rhs.getRawBits();
+}
+
+bool Fixed::operator<=(const Fixed &rhs) const
+{
+    return this->getRawBits() <= rhs.getRawBits();
+}
+
+bool Fixed::operator==(const Fixed &rhs) const
+{
+    return this->getRawBits() == rhs.getRawBits();
+}
+
+bool Fixed::operator!=(const Fixed &rhs) const
+{
+    return this->getRawBits() != rhs.getRawBits();
+}
+
+Fixed Fixed::operator+(const Fixed &rhs) const
+{
+    return Fixed(this->toFloat() + rhs.toFloat());
+}
+
+Fixed Fixed::operator-(const Fixed &rhs) const
+{
+    return Fixed(this->toFloat() - rhs.toFloat());
+}
+
+Fixed Fixed::operator*(const Fixed &rhs) const
+{
+    return Fixed(this->toFloat() * rhs.toFloat());
+}
+
+Fixed Fixed::operator/(const Fixed &rhs) const
+{
+    return Fixed(this->toFloat() / rhs.toFloat());
+}
+
+Fixed &Fixed::operator++(void)
+{
+    this->_rawBits++;
+    return *this;
+}
+
+Fixed Fixed::operator++(int)
+{
+    Fixed tmp(*this);
+    operator++();
+    return tmp;
+}
+
+Fixed &Fixed::operator--(void)
+{
+    this->_rawBits--;
+    return *this;
+}
+
+Fixed Fixed::operator--(int)
+{
+    Fixed tmp(*this);
+    operator--();
+    return tmp;
+}
+
+Fixed &Fixed::min(Fixed &a, Fixed &b)
+{
+    return a < b ? a : b;
+}
+
+Fixed &Fixed::max(Fixed &a, Fixed &b)
+{
+    return a > b ? a : b;
+}
+
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
+{
+    return a < b ? a : b;
+}
+
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
+{
+    return a > b ? a : b;
+}
+
