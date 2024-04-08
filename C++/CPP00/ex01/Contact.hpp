@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agustin <agustin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/07 12:47:07 by agvincen          #+#    #+#             */
-/*   Updated: 2024/03/07 15:06:01 by agvincen         ###   ########.fr       */
+/*   Created: 2024/04/04 15:52:17 by agvincen          #+#    #+#             */
+/*   Updated: 2024/04/08 20:08:25 by agustin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 
 # include <iostream>
 # include <iomanip>
 # include <string>
 # include <limits>
+#include <chrono>
+#include <ctime> 
 
 class Contact
 {
@@ -26,16 +28,19 @@ class Contact
         std::string nickname;
         std::string phone_number;
         std::string darkest_secret;
+        
+        std::time_t timestamp;
 
+        Contact(){
+            this->first_name = "";
+            this->last_name = "";
+            this->nickname = "";
+            this->phone_number = "";
+            this->darkest_secret = "";
+            this->timestamp = 0;};
+
+        void ft_all_fields();
+        bool isNumeric();
 };
-
-class Phonebook
-{
-    public:
-        Contact contacts[8];
-};
-
-void    add_contact(Phonebook *phonebook);
-void    search_contact(Phonebook *phonebook);
 
 #endif

@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/07 12:47:45 by agvincen          #+#    #+#              #
-#    Updated: 2024/03/07 14:57:34 by agvincen         ###   ########.fr        #
+#    Updated: 2024/04/04 17:32:15 by agvincen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
-SRCS = main.cpp functions.cpp
+SRCS = Main.cpp Contact.cpp Phonebook.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 GREEN   =   \033[92;5;118m

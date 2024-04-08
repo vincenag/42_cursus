@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: agustin <agustin@student.42.fr>            +#+  +:+       +#+         #
+#    By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 17:22:16 by agustin           #+#    #+#              #
-#    Updated: 2024/03/12 17:22:19 by agustin          ###   ########.fr        #
+#    Updated: 2024/04/04 15:25:50 by agvincen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = megaphone
 
-FILES = megaphone.cpp
+FILES = Megaphone.cpp
 
 OBJECTS = $(FILES:.cpp=.o)
 
