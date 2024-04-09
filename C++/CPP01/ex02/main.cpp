@@ -6,13 +6,17 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 13:40:30 by agvincen          #+#    #+#             */
-/*   Updated: 2024/03/18 14:15:46 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:37:12 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-int	main(void){
+int	main(int argc, char **argv){
+	if (argc != 1){
+		std::cout << "Usage: ./ex02" << std::endl;
+		return 1;
+	}
 	std::string	string;
 	std::string	*stringPTR;
 
@@ -23,6 +27,7 @@ int	main(void){
 	std::cout << "string address: " << &string << std::endl;
 	std::cout << "stringPTR address: " << stringPTR << std::endl;
 	std::cout << "stringREF address: " << &stringREF << std::endl;
-	std::cout << "stringPTR string: " << *stringPTR << std::endl;
-	std::cout << "stringREF string: " << stringREF << std::endl;
+	std::cout << "string value: " << string << std::endl;
+	std::cout << "stringPTR value: " << *stringPTR << std::endl;
+	std::cout << "stringREF value: " << stringREF << std::endl;
 }

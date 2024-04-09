@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agustin <agustin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 15:54:33 by agvincen          #+#    #+#             */
-/*   Updated: 2024/04/08 20:09:48 by agustin          ###   ########.fr       */
+/*   Updated: 2024/04/09 13:38:39 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void Contact::ft_all_fields()
         std::getline(std::cin, this->nickname);
     }
     while (this->phone_number.empty() || !this->isNumeric()) {
-        std::cout << "Phone number is empty or not numeric. Please enter a value:";
+        std::cout << "Phone number is empty or not numeric. Please enter a value: ";
         std::getline(std::cin, this->phone_number);
     }
     while (this->darkest_secret.empty()) {

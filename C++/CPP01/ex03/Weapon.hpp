@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 16:06:51 by agvincen          #+#    #+#             */
-/*   Updated: 2024/03/18 16:23:03 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:47:33 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ class Weapon{
         ~Weapon();
         const std::string &getType() const;
         void setType(std::string type);
-
 };
 
 #endif

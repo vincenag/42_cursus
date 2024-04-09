@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agustin <agustin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 14:31:17 by agvincen          #+#    #+#             */
-/*   Updated: 2024/04/08 19:34:44 by agustin          ###   ########.fr       */
+/*   Updated: 2024/04/09 13:44:59 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 void    Phonebook::add_contact()
 {
-    auto current_time = std::chrono::system_clock::now();
+    std::chrono::system_clock::time_point current_time = std::chrono::system_clock::now();
+    //auto current_time = std::chrono::system_clock::now();
     std::time_t timestamp = std::chrono::system_clock::to_time_t(current_time);
 
     int empty_index = 0;
@@ -53,6 +54,13 @@ void    Phonebook::add_contact()
     std::cout << "Contact added succesfully" << std::endl;
 }
 
+bool isInteger(const std::string& s) {
+    if (s.empty() || ((!isdigit(s[0])) && (s[0] != '-') && (s[0] != '+'))) return false;
+    char* p;
+    strtol(s.c_str(), &p, 10);
+    return (*p == 0);
+}
+
 void    Phonebook::search_contact()
 {
     int i = 0;
@@ -86,8 +94,15 @@ void    Phonebook::search_contact()
     }
     
     std :: cout << "Enter the index of the contact: ";
-    std :: cin >> i;
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Limpiar el buffer de entrada
+    std::string input;
+    std :: getline(std :: cin, input);
+
+    if (isInteger(input))
+        i = std::stoi(input);
+    else
+        i = -1;
+
+    std::cin.clear();
 
     if (i >= 0 && i < 8 && !this->contacts[i].first_name.empty())
     {
