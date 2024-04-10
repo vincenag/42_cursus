@@ -3,40 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agustin <agustin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 16:12:22 by agvincen          #+#    #+#             */
-/*   Updated: 2024/03/19 17:42:16 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/04/10 13:40:24 by agustin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-int	convert(std::string level)
-{
-	if (level == "DEBUG")
-		return (0);
-	if (level == "INFO")
-		return (1);
-	if (level == "WARNING")
-		return (2);
-	if (level == "ERROR")
-		return (3);
-	return (-1);
-}
-
 int	main(int argc, char **argv)
 {
 	Harl	harl;
-	int		level;
 
 	if (argc != 2)
 	{
-		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+		std::cout << "Usage: ./harlFilter level" << std::endl;
 		return (0);
 	}
-	level =	convert(argv[1]);
-	switch(level)
+
+	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	int i = 0;
+	while (i < 4 && levels[i].compare(argv[1]))
+		i++;
+
+	switch(i)
 	{
 		case 0:
 			harl.complain("DEBUG");
