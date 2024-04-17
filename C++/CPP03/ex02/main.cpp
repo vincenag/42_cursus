@@ -6,41 +6,42 @@
 /*   By: agustin <agustin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 22:15:21 by agustin           #+#    #+#             */
-/*   Updated: 2024/04/16 20:39:22 by agustin          ###   ########.fr       */
+/*   Updated: 2024/04/16 21:56:25 by agustin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int	main()
 {
-	ScavTrap	ScavTrapA("ScavTrapA");
-	ScavTrap	ScavTrapB("ScavTrapB");
+	FragTrap	FragTrapA("FragTrapA");
+	FragTrap	FragTrapB("FragTrapB");
 
 	std::cout << std::endl;
 
-	std::cout << ScavTrapA << "\n" << ScavTrapB << std::endl;
+	std::cout << FragTrapA << "\n" << FragTrapB << std::endl;
 
 	std::cout << std::endl;
 
-	ScavTrapA.attack("ScavTrapB");
-	ScavTrapB.takeDamage(ScavTrapA.getAttackDamage());
+	FragTrapA.attack("FragTrapB");
+	FragTrapB.takeDamage(FragTrapA.getAttackDamage());
 
 	std::cout << std::endl;
 
-	std::cout << ScavTrapA << "\n" << ScavTrapB << std::endl;
+	std::cout << FragTrapA << "\n" << FragTrapB << std::endl;
 
 	std::cout << std::endl;
 
-	ScavTrapB.beRepaired(5);
+	FragTrapB.beRepaired(5);
 
 	std::cout << std::endl;
 
-	std::cout << ScavTrapA << "\n" << ScavTrapB << std::endl;
+	std::cout << FragTrapA << "\n" << FragTrapB << std::endl;
 
 	std::cout << std::endl;
 
-	ScavTrapB.guardGate();
+	FragTrapB.highFivesGuys();
 
 	std::cout << std::endl;
 

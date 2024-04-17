@@ -6,7 +6,7 @@
 /*   By: agustin <agustin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 22:15:26 by agustin           #+#    #+#             */
-/*   Updated: 2024/04/16 20:31:20 by agustin          ###   ########.fr       */
+/*   Updated: 2024/04/17 16:30:18 by agustin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <iostream>
 #include <string>
 
-class ScavTrap: public ClapTrap
+class ScavTrap: virtual public ClapTrap
 {
     public:
         ScavTrap();

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   Claptrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agustin <agustin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/03 17:17:08 by agustin           #+#    #+#             */
-/*   Updated: 2024/04/16 14:27:47 by agustin          ###   ########.fr       */
+/*   Created: 2024/04/03 22:15:18 by agustin           #+#    #+#             */
+/*   Updated: 2024/04/16 19:25:35 by agustin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define CLAPTRAP_HPP
 
 #include <iostream>
-
 
 class ClapTrap
 {
@@ -34,7 +33,7 @@ class ClapTrap
         int getAttackDamage();
         std::string getName();
 
-    private:
+    protected:
         std::string _name;
         int _hitPoints;
         int _energyPoints;
@@ -42,5 +41,6 @@ class ClapTrap
 };
 
 std::ostream	&operator<<(std::ostream &stream, ClapTrap &clapTrap);
+
 
 #endif

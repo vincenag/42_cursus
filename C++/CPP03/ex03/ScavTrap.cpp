@@ -6,7 +6,7 @@
 /*   By: agustin <agustin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 22:15:01 by agustin           #+#    #+#             */
-/*   Updated: 2024/04/16 22:03:24 by agustin          ###   ########.fr       */
+/*   Updated: 2024/04/17 17:05:33 by agustin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ ScavTrap::ScavTrap(const ScavTrap &copy) {
 }
 
 ScavTrap::~ScavTrap() {
-    std::cout << "ScavTrap " << this->getName() << " destructor called" << std::endl;
+    std::cout << "ScavTrap "<< this->getName() <<" destructor called" << std::endl;
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &copy) {

@@ -6,41 +6,42 @@
 /*   By: agustin <agustin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 22:15:21 by agustin           #+#    #+#             */
-/*   Updated: 2024/04/16 20:39:22 by agustin          ###   ########.fr       */
+/*   Updated: 2024/04/17 16:55:04 by agustin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int	main()
 {
-	ScavTrap	ScavTrapA("ScavTrapA");
-	ScavTrap	ScavTrapB("ScavTrapB");
+	DiamondTrap diamondTrap1("DiamondTrap1");
+	DiamondTrap diamondTrap2("DiamondTrap2");
 
 	std::cout << std::endl;
 
-	std::cout << ScavTrapA << "\n" << ScavTrapB << std::endl;
+	std::cout << diamondTrap1 << "\n" << diamondTrap2 << std::endl;
 
 	std::cout << std::endl;
 
-	ScavTrapA.attack("ScavTrapB");
-	ScavTrapB.takeDamage(ScavTrapA.getAttackDamage());
+	diamondTrap1.attack("DiamondTrap2");
+	diamondTrap2.takeDamage(diamondTrap1.getAttackDamage());
 
 	std::cout << std::endl;
 
-	std::cout << ScavTrapA << "\n" << ScavTrapB << std::endl;
+	std::cout << diamondTrap1 << "\n" << diamondTrap2 << std::endl;
 
 	std::cout << std::endl;
 
-	ScavTrapB.beRepaired(5);
+	diamondTrap2.beRepaired(5);
 
 	std::cout << std::endl;
 
-	std::cout << ScavTrapA << "\n" << ScavTrapB << std::endl;
+	std::cout << diamondTrap1 << "\n" << diamondTrap2 << std::endl;
 
 	std::cout << std::endl;
 
-	ScavTrapB.guardGate();
+	diamondTrap2.highFivesGuys();
+	diamondTrap1.whoAmI();
 
 	std::cout << std::endl;
 
