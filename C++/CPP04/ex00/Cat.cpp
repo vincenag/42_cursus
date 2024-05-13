@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agustin <agustin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:52:29 by agustin           #+#    #+#             */
-/*   Updated: 2024/04/29 16:37:52 by agustin          ###   ########.fr       */
+/*   Updated: 2024/05/03 13:05:33 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat()
+Cat::Cat(): Animal("Cat")
 {
     std::cout << "Cat constructor called" << std::endl;
-    this->type = "Cat";
 }
 
 Cat::Cat(const Cat &copy)

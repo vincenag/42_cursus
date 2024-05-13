@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agustin <agustin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:26:58 by agustin           #+#    #+#             */
-/*   Updated: 2024/04/29 11:43:03 by agustin          ###   ########.fr       */
+/*   Updated: 2024/05/03 13:24:29 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ Animal::Animal()
     std::cout << "Animal constructor called" << std::endl;
     this->type = "Animal";
 }
-
 Animal::Animal(std::string type)
 {
     std::cout << "Animal constructor called" << std::endl;

@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agustin <agustin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 14:52:29 by agustin           #+#    #+#             */
-/*   Updated: 2024/04/29 16:37:52 by agustin          ###   ########.fr       */
+/*   Updated: 2024/05/03 14:38:59 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat()
+Cat::Cat(): Animal("Cat")
 {
     std::cout << "Cat constructor called" << std::endl;
-    this->type = "Cat";
+    this->_brain = new Brain();
 }
-
 Cat::Cat(const Cat &copy)
 {
     std::cout << "Cat copy constructor called" << std::endl;
@@ -36,10 +35,10 @@ Cat &Cat::operator=(const Cat &copy)
 Cat::~Cat()
 {
     std::cout << "Cat destructor called" << std::endl;
+    delete this->_brain;
 }
 
 void Cat::makeSound() const
 {
     std::cout << "Meow Meow" << std::endl;
 }
-

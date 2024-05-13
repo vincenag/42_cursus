@@ -3,17 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agustin <agustin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 17:15:23 by agustin           #+#    #+#             */
-/*   Updated: 2024/04/29 17:16:43 by agustin          ###   ########.fr       */
+/*   Updated: 2024/05/03 13:17:49 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal() : _type("WrongAnimal") {
-    std::cout << "WrongAnimal default constructor called" << std::endl;
+WrongAnimal::WrongAnimal() {
+    std::cout << "WrongAnimal constructor called" << std::endl;
+}
+
+WrongAnimal::WrongAnimal(std::string type): _type(type) {
+    std::cout << "WrongAnimal constructor called" << std::endl;
 }
 
 WrongAnimal::WrongAnimal(WrongAnimal const & src) {

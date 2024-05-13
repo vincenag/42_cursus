@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agustin <agustin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 17:18:15 by agustin           #+#    #+#             */
-/*   Updated: 2024/04/29 17:18:35 by agustin          ###   ########.fr       */
+/*   Updated: 2024/05/03 14:42:20 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat() {
-    this->_type = "WrongCat";
-    std::cout << "WrongCat default constructor called" << std::endl;
+WrongCat::WrongCat(): WrongAnimal("WrongCat"){
+    std::cout << "WrongCat constructor called" << std::endl;
 }
 
 WrongCat::WrongCat(WrongCat const & src) {

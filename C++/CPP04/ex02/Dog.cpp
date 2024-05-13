@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agustin <agustin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 16:39:59 by agustin           #+#    #+#             */
-/*   Updated: 2024/04/29 16:40:29 by agustin          ###   ########.fr       */
+/*   Updated: 2024/05/03 14:42:24 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog()
+Dog::Dog(): Animal("Dog")
 {
     std::cout << "Dog constructor called" << std::endl;
-    this->type = "Dog";
+    this->_brain = new Brain();
 }
 
 Dog::Dog(const Dog &copy)
@@ -36,6 +36,7 @@ Dog &Dog::operator=(const Dog &copy)
 Dog::~Dog()
 {
     std::cout << "Dog destructor called" << std::endl;
+    delete this->_brain;
 }
 
 void Dog::makeSound() const
