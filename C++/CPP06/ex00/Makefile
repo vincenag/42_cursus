@@ -6,11 +6,11 @@
 #    By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 14:56:01 by agvincen          #+#    #+#              #
-#    Updated: 2024/05/13 17:27:26 by agvincen         ###   ########.fr        #
+#    Updated: 2024/05/14 12:30:05 by agvincen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex00
+NAME = convert
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
