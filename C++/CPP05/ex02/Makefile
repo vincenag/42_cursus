@@ -6,11 +6,11 @@
 #    By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/08 10:29:59 by agvincen          #+#    #+#              #
-#    Updated: 2024/05/14 22:20:26 by agvincen         ###   ########.fr        #
+#    Updated: 2024/05/14 22:20:19 by agvincen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex01
+NAME = ex02
 
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
@@ -18,7 +18,10 @@ RM = rm -rf
 
 SRCS = main.cpp\
 		Bureaucrat.cpp\
-		Form.cpp\
+		AForm.cpp\
+		ShrubberyCreationForm.cpp\
+		RobotomyRequestForm.cpp\
+		PresidentialPardonForm.cpp
 		
 OBJS = $(SRCS:.cpp=.o)
 
