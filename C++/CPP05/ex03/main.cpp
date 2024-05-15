@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 10:29:53 by agvincen          #+#    #+#             */
-/*   Updated: 2024/05/14 22:58:56 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/05/15 18:44:26 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int main(void)
 
     try
     {
+        std::cout << "--------------------------------" << std::endl;
         form = intern.makeForm("robotomy request", "home");
         b2.signForm(*form);
         b1.executeForm(*form);
@@ -51,6 +52,7 @@ int main(void)
 
     try
     {
+        std::cout << "--------------------------------" << std::endl;
         form = intern.makeForm("presidential pardon", "home");
         b2.signForm(*form);
         b1.executeForm(*form);

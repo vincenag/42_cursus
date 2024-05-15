@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 10:29:53 by agvincen          #+#    #+#             */
-/*   Updated: 2024/05/10 22:08:57 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:08:17 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ int main(void)
     }
     try
     {
-        Bureaucrat b1("Bureaucrat1", 1);
-        Form f1("Form1", 1, 1);
+        Bureaucrat b5("Bureaucrat1", 3);
+        Form f1("Form1", 4, 1);
         std::cout << f1 << std::endl;
-        f1.beSigned(b1);
+        f1.beSigned(b5);
         std::cout << f1 << std::endl;
     }
     catch (std::exception &e)
@@ -73,10 +73,10 @@ int main(void)
     }
     try
     {
-        Bureaucrat b2("Bureaucrat2", 150);
+        Bureaucrat b6("Bureaucrat2", 150);
         Form f2("Form2", 150, 150);
         std::cout << f2 << std::endl;
-        f2.beSigned(b2);
+        f2.beSigned(b6);
         std::cout << f2 << std::endl;
     }
     catch (std::exception &e)

@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 10:29:53 by agvincen          #+#    #+#             */
-/*   Updated: 2024/05/14 22:23:27 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/05/15 18:27:55 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int main(void)
 
     try 
 	{
+        std::cout << "--------------------------------" << std::endl;
         AForm *SCF = new RobotomyRequestForm("home");
         Bureaucrat b1("Bob2", 44);
         Bureaucrat b2("Jhon2", 72);
@@ -52,6 +53,7 @@ int main(void)
 
     try 
 	{
+        std::cout << "--------------------------------" << std::endl;
         AForm *SCF = new PresidentialPardonForm("home");
         Bureaucrat b1("Bob2", 5);
         Bureaucrat b2("Jhon2", 24);

@@ -81,7 +81,7 @@ const char *AForm::FormNotSignedException::what() const throw()
 
 void AForm::execute(Bureaucrat const &executor) const
 {
-    if (executor.getGrade() > _gradeToExecute)
+    if (executor.getGrade() > this->_gradeToExecute)
         throw AForm::GradeTooLowException();
     if (!_signed)
         throw AForm::FormNotSignedException();

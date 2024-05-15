@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 13:35:55 by agvincen          #+#    #+#             */
-/*   Updated: 2024/05/14 16:52:40 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/05/15 16:58:01 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class AForm
     public:
         AForm(std::string const name, int gradeToSign, int gradeToExecute);
         AForm(AForm const &copy);
-        ~AForm(void);
+        virtual ~AForm(void);
         AForm &operator=(AForm const &rhs);
         std::string const getName(void) const;
         
