@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 21:39:13 by agvincen          #+#    #+#             */
-/*   Updated: 2024/05/14 21:39:30 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/05/16 10:10:47 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class PresidentialPardonForm : public AForm
 
     private:
         std::string _target;
+        PresidentialPardonForm(void);
 };
 
 #endif

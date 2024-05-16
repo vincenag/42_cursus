@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 20:30:29 by agvincen          #+#    #+#             */
-/*   Updated: 2024/05/14 21:13:54 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/05/16 10:11:05 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class ShrubberyCreationForm : public AForm
 
     private:
         std::string _target;
+        ShrubberyCreationForm(void);
 };
 
 #endif

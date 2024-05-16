@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 21:31:33 by agvincen          #+#    #+#             */
-/*   Updated: 2024/05/14 21:31:48 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/05/16 10:10:55 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class RobotomyRequestForm : public AForm
 
     private:
         std::string _target;
+        RobotomyRequestForm(void);
 };
 
 #endif
