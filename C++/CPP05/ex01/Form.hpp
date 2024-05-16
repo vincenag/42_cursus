@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 13:35:55 by agvincen          #+#    #+#             */
-/*   Updated: 2024/05/10 22:09:12 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/05/16 10:06:38 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ class Form
         bool _signed;
         int const _gradeToSign;
         int const _gradeToExecute;
+
+        Form(void);
     public:
         Form(std::string const name, int gradeToSign, int gradeToExecute);
         Form(Form const &copy);
