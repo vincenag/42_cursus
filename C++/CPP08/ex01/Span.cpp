@@ -6,12 +6,13 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:45:29 by agvincen          #+#    #+#             */
-/*   Updated: 2024/05/22 18:54:58 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/05/28 16:49:11 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 #include <climits>
+
 
 Span::Span(unsigned int N) : _N(N)
 {
@@ -75,3 +76,9 @@ const char* Span::SpanNoSpanException::what() const throw()
     return "No span to find";
 }
 
+void Span::addManyNumbers(std::list<int>::iterator begin, std::list<int>::iterator end)
+{
+    if (std::distance(begin, end) > static_cast<int>(_N - _v.size()))
+        throw SpanFullException();
+    _v.insert(_v.end(), begin, end);
+}

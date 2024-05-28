@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:41:35 by agvincen          #+#    #+#             */
-/*   Updated: 2024/05/22 18:43:38 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/05/28 16:41:15 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <vector>
 # include <algorithm>
 # include <exception>
+# include <list>
 
 class Span
 {
@@ -30,6 +31,8 @@ class Span
         void addNumber(int n);
         unsigned int shortestSpan();
         unsigned int longestSpan();
+
+        void addManyNumbers(std::list<int>::iterator begin, std::list<int>::iterator end);
 
         class SpanFullException : public std::exception
         {
