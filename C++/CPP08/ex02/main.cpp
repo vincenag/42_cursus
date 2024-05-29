@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 09:53:02 by agvincen          #+#    #+#             */
-/*   Updated: 2024/05/29 10:01:40 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/05/29 10:12:55 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,15 @@ int main()
 
     std::cout << "Stack size:" << mstack.size() << std::endl;
     std::cout << "Iterating through the stack:" << std::endl;
+
+    ++it;
+    --it;
     while (it != ite)
     {
         std::cout << *it << std::endl;
         ++it;
     }
 
+    std::stack<int> s(mstack);
     return 0;
 }
