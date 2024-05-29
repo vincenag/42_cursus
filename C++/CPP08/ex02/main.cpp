@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 09:53:02 by agvincen          #+#    #+#             */
-/*   Updated: 2024/05/28 17:26:04 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/05/29 10:01:40 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ int main()
 
     mstack.pop();
 
-    std::cout << "Size: " << mstack.size() << std::endl;
+    if (mstack.empty()) {
+        std::cout << "Stack is empty." << std::endl;
+    } else {
+        std::cout << "Stack is not empty." << std::endl;
+    }
 
     mstack.push(3);
     mstack.push(5);
@@ -36,6 +40,7 @@ int main()
     MutantStack<int>::iterator ite = mstack.end();
     std::cout << "End: " << *ite << std::endl;
 
+    std::cout << "Stack size:" << mstack.size() << std::endl;
     std::cout << "Iterating through the stack:" << std::endl;
     while (it != ite)
     {
