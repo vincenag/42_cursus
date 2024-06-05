@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:38:15 by agvincen          #+#    #+#             */
-/*   Updated: 2024/06/04 13:34:58 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/06/05 17:17:33 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 # include <iostream>
 # include <string>
-# include <vector>
 # include <list>
 # include <algorithm>
 # include <chrono>
+# include <deque>
+
 
 class PmergeMe {
     public:
@@ -27,19 +28,53 @@ class PmergeMe {
         ~PmergeMe();
 
         PmergeMe &operator=(PmergeMe const &rhs);
+    
+        template <typename Container>
+        void mergeSort(Container &lst){
+            if (lst.size() <= 1)
+                return;
 
-        void    mergeSortVector(std::vector<int> &v);
-        void    mergeSortList(std::list<int> &l);
+            auto mid = lst.begin();
+            std::advance(mid, lst.size() / 2);
 
+            Container left(lst.begin(), mid);
+            Container right(mid, lst.end());
+
+            mergeSort(left);
+            mergeSort(right);
+
+            lst = merge(left, right);
+        }
 
     private:
         std::list<int>  _l;
-        std::vector<int> _v;
+        std::deque<int> _d;
 
-        void    sortVector(std::vector<int> &v, int l, int r);
-        void    mergeVector(std::vector<int> &v, int l, int m, int r);
+        template <typename Container>
+        Container merge(const Container &left, const Container &right){
+            Container merged;
+            auto i = left.begin(), j = right.begin();
 
-        std::list<int>  mergeList(const std::list<int> &left, const std::list<int> &right);
+            while (i != left.end() && j != right.end()) {
+                if (*i <= *j) {
+                    merged.emplace_back(*i++);
+                } else {
+                    merged.emplace_back(*j++);
+                }
+            }
+
+            while (i != left.end()) {
+                merged.emplace_back(*i++);
+            }
+
+            while (j != right.end()) {
+                merged.emplace_back(*j++);
+            }
+
+            return merged;
+        }
 };
 
+template void PmergeMe::mergeSort<std::list<int>>(std::list<int> &lst);
+template void PmergeMe::mergeSort<std::deque<int>>(std::deque<int> &lst);
 #endif

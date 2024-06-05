@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 16:30:11 by agvincen          #+#    #+#             */
-/*   Updated: 2024/05/31 10:19:06 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/06/05 11:07:50 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange & rhs) {
     return *this;
 }
 
-bool isValidDate(const std::string& date) {
+bool BitcoinExchange::isValidDate(const std::string& date) {
     std::tm tm = {};
     std::istringstream ss(date);
     ss >> std::get_time(&tm, "%Y-%m-%d");

@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 16:13:47 by agvincen          #+#    #+#             */
-/*   Updated: 2024/05/30 23:46:24 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/06/05 10:54:34 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class BitcoinExchange {
         BitcoinExchange & operator=(const BitcoinExchange & rhs);
 
         void exchange(std::string const & textfile);
-        bool isDateValid(std::string const & date);
+        bool isValidDate(const std::string& date);
 
     private:
         std::map<std::string, float> _exchangeRate;
