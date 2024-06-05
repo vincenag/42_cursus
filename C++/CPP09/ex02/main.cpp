@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:28:14 by agvincen          #+#    #+#             */
-/*   Updated: 2024/06/05 16:47:39 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/06/05 17:24:30 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ int main(int argc, char* argv[]) {
     std::chrono::duration<double, std::micro> timeTakenList = endTimeList - startTimeList;
 
     // Medir tiempo de ordenamiento del vector
-    auto startTimeVector = std::chrono::high_resolution_clock::now();
+    auto startTimeDeque = std::chrono::high_resolution_clock::now();
     p.mergeSort(myDeque);
-    auto endTimeVector = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::micro> timeTakenVector = endTimeVector - startTimeVector;
+    auto endTimeDeque = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::micro> timeTakenDeque = endTimeDeque - startTimeDeque;
 
     count = 0;
     std::cout << "After: ";
@@ -83,7 +83,7 @@ int main(int argc, char* argv[]) {
         std::cout << std::endl;
 
     std::cout << "Time to process a range of " << argc - 1 << " elements with std::list: " << timeTakenList.count() << " us" << std::endl;
-    std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque: " << timeTakenVector.count() << " us" << std::endl;
+    std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque: " << timeTakenDeque.count() << " us" << std::endl;
 
     return 0;
 
