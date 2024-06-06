@@ -6,12 +6,21 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:28:14 by agvincen          #+#    #+#             */
-/*   Updated: 2024/06/05 17:24:30 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/06/06 13:13:58 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 #include <chrono>
+
+
+bool isInt(const std::string &s) {
+    for (char c : s) {
+        if (!std::isdigit(c))
+            return false;
+    }
+    return true;
+}
 
 int main(int argc, char* argv[]) {
     
@@ -21,11 +30,21 @@ int main(int argc, char* argv[]) {
     }
 
     for (int i = 1; i < argc; i++) {
-        if (std::atoi(argv[i]) < 0) {
+        if (!isInt(argv[i])){
             std::cerr << "Invalid input" << std::endl;
             return 1;
         }
+        try
+        {
+            std::stoi(argv[i]);
+        }
+        catch(const std::exception& e)
+        {
+            std::cerr << "Invalid input" << '\n';
+            return 1;
+        }     
     }
+   
 
     std::list<int> myList;
     std::deque<int> myDeque;
