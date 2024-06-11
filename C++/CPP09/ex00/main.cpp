@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 19:39:02 by agvincen          #+#    #+#             */
-/*   Updated: 2024/05/30 20:04:22 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/06/11 15:43:39 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,16 @@ int main(int argc, char **argv) {
         return 1;
     }
     
-    BitcoinExchange Base("data.csv");
+    std::string dataFile = "data.csv";
+
+    std::ifstream file(dataFile.c_str());
+    if (!file.is_open()) {
+        std::cerr << "Error: could not open file " << dataFile << std::endl;
+        return 1;
+    }
+    file.close();
+
+    BitcoinExchange Base(dataFile);
     Base.exchange(argv[1]);
 
     return 0;

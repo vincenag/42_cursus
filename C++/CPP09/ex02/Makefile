@@ -6,7 +6,7 @@
 #    By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 12:52:08 by agvincen          #+#    #+#              #
-#    Updated: 2024/06/03 12:52:45 by agvincen         ###   ########.fr        #
+#    Updated: 2024/06/11 16:35:26 by agvincen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,5 +48,8 @@ re: fclean all
 $(NAME): $(OBJS)
 	@$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 	@echo "$(GREEN)\n[Compiled$(CIAN) $@ $(GREEN)successfully]$(END)"
+
+%.o: %.cpp
+	$(CC) $(FLAGS) -c $< -o $@
 
 .PHONY: all show clean fclean re

@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 11:05:36 by agvincen          #+#    #+#             */
-/*   Updated: 2024/06/05 13:22:25 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/06/11 15:54:04 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void RPN::processToken(const std::string &token)
     {
         try
         {
-            _stack.push(std::stod(token));
+            _stack.push(atof(token.c_str()));
         }
         catch (const std::invalid_argument &)
         {

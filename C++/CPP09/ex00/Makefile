@@ -6,10 +6,9 @@
 #    By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/30 19:35:02 by agvincen          #+#    #+#              #
-#    Updated: 2024/05/30 19:35:50 by agvincen         ###   ########.fr        #
+#    Updated: 2024/06/11 16:18:36 by agvincen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 NAME = btc
 
@@ -18,12 +17,12 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 SRCS = main.cpp\
-		BitcoinExchange.cpp
-		
+        BitcoinExchange.cpp
+
 OBJS = $(SRCS:.cpp=.o)
 
-GREEN   =   \033[92;5;118m
-YELLOW  =   \033[93;5;226m
+GREEN   = \033[92;5;118m
+YELLOW  = \033[93;5;226m
 CIAN    = \033[36m
 BLUE    = \033[1;38;5;27m
 END     = \033[0m
@@ -31,10 +30,10 @@ END     = \033[0m
 all: $(NAME)
 
 show:
-    @printf "NAME   : $(NAME)\n"
-    @printf "CC  : $(CC)\n"
-    @printf "FLAGS   : $(FLAGS)\n"
-    @printf "SRCS    :$(addprefix \n\t , $(notdir $(SRCS)))\n"
+	@printf "NAME   : $(NAME)\n"
+	@printf "CC     : $(CC)\n"
+	@printf "FLAGS  : $(FLAGS)\n"
+	@printf "SRCS   : $(addprefix \n\t , $(notdir $(SRCS)))\n"
 
 clean:
 	@$(RM) *.o
@@ -47,7 +46,11 @@ fclean: clean
 re: fclean all
 
 $(NAME): $(OBJS)
-	@$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+	@echo "Compiling with flags: $(FLAGS)"
+	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 	@echo "$(GREEN)\n[Compiled$(CIAN) $@ $(GREEN)successfully]$(END)"
+
+%.o: %.cpp
+	$(CC) $(FLAGS) -c $< -o $@
 
 .PHONY: all show clean fclean re

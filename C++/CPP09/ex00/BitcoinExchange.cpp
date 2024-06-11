@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 16:30:11 by agvincen          #+#    #+#             */
-/*   Updated: 2024/06/05 11:07:50 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/06/11 15:44:24 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ BitcoinExchange::BitcoinExchange() {
 }
 
 BitcoinExchange::BitcoinExchange(std::string const & exchangeRate) {
-    std::ifstream file(exchangeRate);
+    std::ifstream file(exchangeRate.c_str());
 
     if (!file.is_open()) {
         std::cerr << "Error: could not open file" << std::endl;
@@ -40,7 +40,7 @@ BitcoinExchange::BitcoinExchange(std::string const & exchangeRate) {
 
         if (std::getline(iss, date, ',') && std::getline(iss, rate)) {
             try{
-                value = std::stod(rate);
+                value = std::atoi(rate.c_str());
             }
             catch (std::invalid_argument & e) {
                 std::cerr << "Error: invalid argument" << std::endl;
@@ -81,7 +81,7 @@ bool BitcoinExchange::isValidDate(const std::string& date) {
 }
 
 void BitcoinExchange::exchange(std::string const & textfile) {
-    std::ifstream inputFile(textfile);
+    std::ifstream inputFile(textfile.c_str());
 
     if (!inputFile.is_open()) {
         std::cerr << "Error: could not open file" << std::endl;
@@ -120,7 +120,7 @@ void BitcoinExchange::exchange(std::string const & textfile) {
             }
 
             if (!amount.empty()) {
-                value = std::stof(amount);
+                value = std::atof(amount.c_str());
                 if (value < 0) {
                     throw std::invalid_argument("Error: not a positive number");
                 } else if (value > 1000) {
@@ -134,7 +134,7 @@ void BitcoinExchange::exchange(std::string const & textfile) {
             continue;
         }
 
-        auto it = _exchangeRate.lower_bound(date);
+        std::map<std::string, float>::iterator it = _exchangeRate.lower_bound(date);
 
         // Si no hay coincidencia exacta, buscar la fecha pasada más cercana
         if (it == _exchangeRate.end() || it->first != date) {

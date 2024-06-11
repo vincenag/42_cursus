@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 11:04:08 by agvincen          #+#    #+#             */
-/*   Updated: 2024/05/31 13:24:18 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/06/11 15:55:05 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stack>
 # include <cmath>
 # include <sstream>
+# include <stdlib.h>
 
 class RPN
 {
