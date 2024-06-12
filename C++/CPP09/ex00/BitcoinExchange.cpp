@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 16:30:11 by agvincen          #+#    #+#             */
-/*   Updated: 2024/06/11 15:44:24 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/06/12 19:45:38 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ BitcoinExchange::BitcoinExchange(std::string const & exchangeRate) {
 
         if (std::getline(iss, date, ',') && std::getline(iss, rate)) {
             try{
-                value = std::atoi(rate.c_str());
+                value = atof(rate.c_str());
             }
             catch (std::invalid_argument & e) {
                 std::cerr << "Error: invalid argument" << std::endl;
@@ -68,17 +68,54 @@ BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange & rhs) {
     return *this;
 }
 
-bool BitcoinExchange::isValidDate(const std::string& date) {
-    std::tm tm = {};
-    std::istringstream ss(date);
-    ss >> std::get_time(&tm, "%Y-%m-%d");
-    if (ss.fail()) {
-        return false;
+bool BitcoinExchange::isnumber(const std::string &s) {
+    for (size_t i = 0; i < s.length(); i++) {
+        if ((s[i] == '-' && i == 0) || s[i] == '.')
+            continue;
+        if (!isdigit(s[i]))
+            return false;
     }
-    std::ostringstream os;
-    os << std::put_time(&tm, "%Y-%m-%d");
-    return os.str() == date;
+    return true;
 }
+
+bool BitcoinExchange::isValidDate(const std::string& date) {
+    std::istringstream ss(date);
+    int day, month, year;
+
+    // Parse the date string
+    size_t dash = date.find('-');
+    if (dash == std::string::npos || !isnumber(date.substr(0, dash)) || date.substr(0, dash).length() != 4)
+        return false;
+
+    year = std::atoi(date.substr(0, dash).c_str());
+    size_t dash2 = date.find('-', dash + 1);
+
+    if (dash2 == std::string::npos || !isnumber(date.substr(dash + 1, dash2 - dash - 1)) || date.substr(dash + 1, dash2 - dash - 1).length() != 2)
+        return false;
+    month = std::atoi(date.substr(dash + 1, dash2 - dash - 1).c_str());
+
+    if (!isnumber(date.substr(dash2 + 1)) || date.substr(dash2 + 1).length() != 2)
+        return false;
+    day = std::atoi(date.substr(dash2 + 1).c_str());
+
+  
+    // Check if the year is a leap year
+    bool isLeapYear = (year % 4 == 0 && year % 100!= 0) || (year % 400 == 0);
+
+    // Days in each month
+    int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    // Adjust days in February for leap years
+    if (isLeapYear)
+        daysInMonth[1] = 29;
+
+    // Validate day and month
+    if (day > 0 && day <= daysInMonth[month - 1])
+        return true;
+    else 
+        return false;
+}
+
 
 void BitcoinExchange::exchange(std::string const & textfile) {
     std::ifstream inputFile(textfile.c_str());
@@ -120,6 +157,9 @@ void BitcoinExchange::exchange(std::string const & textfile) {
             }
 
             if (!amount.empty()) {
+                if (!isnumber(amount)) {
+                    throw std::invalid_argument("Error: amount is not a number => " + amount);
+                }
                 value = std::atof(amount.c_str());
                 if (value < 0) {
                     throw std::invalid_argument("Error: not a positive number");
@@ -135,6 +175,7 @@ void BitcoinExchange::exchange(std::string const & textfile) {
         }
 
         std::map<std::string, float>::iterator it = _exchangeRate.lower_bound(date);
+        
 
         // Si no hay coincidencia exacta, buscar la fecha pasada más cercana
         if (it == _exchangeRate.end() || it->first != date) {

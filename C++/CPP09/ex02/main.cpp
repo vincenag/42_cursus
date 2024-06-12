@@ -6,17 +6,19 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:28:14 by agvincen          #+#    #+#             */
-/*   Updated: 2024/06/06 13:27:46 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/06/12 11:49:25 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-#include <chrono>
+#include <sys/time.h>
 
 
 bool isInt(const std::string &s) {
-    for (char c : s) {
-        if (!std::isdigit(c))
+    for (size_t i = 0; i < s.length(); i++) {
+        if (s[i] == '-' && i == 0)
+            continue;
+        if (!isdigit(s[i]))
             return false;
     }
     return true;
@@ -24,17 +26,18 @@ bool isInt(const std::string &s) {
 
 void printList(const std::list<int> &myList) {
     int count = 0;
-    std::cout << "Before: ";
     bool printAll = true;
-    for (auto &i : myList) {
-        if (printAll) 
-            std::cout << i << " ";
-        else {
-            std::cout << "[...]" << std::endl;
-            break;
-        }
-        if (++count >= 5)
+    for (typename std::list<int>::const_iterator i = myList.begin(); i != myList.end(); i++)
+    {
+        if (count < 5)
+            std::cout << *i << " ";
+        else if (printAll)
+        {
+            std::cout << "[...]";
+            std::cout << std::endl;
             printAll = false;
+        }
+        count++;
     }
     if (myList.size() <= 5)
         std::cout << std::endl;
@@ -52,15 +55,6 @@ int main(int argc, char* argv[]) {
             std::cerr << "Invalid input" << std::endl;
             return 1;
         }
-        try
-        {
-            std::stoi(argv[i]);
-        }
-        catch(const std::exception& e)
-        {
-            std::cerr << "Invalid input" << '\n';
-            return 1;
-        }     
     }
    
     std::list<int> myList;
@@ -71,26 +65,31 @@ int main(int argc, char* argv[]) {
         myDeque.push_back(atoi(argv[i]));
     }
 
+    std::cout << "Before: ";
     printList(myList);
     
     PmergeMe p;
 
     // Medir tiempo de ordenamiento de la lista
-    auto startTimeList = std::chrono::high_resolution_clock::now();
+    struct timeval start, end;
+    gettimeofday(&start, NULL);
     p.mergeSort(myList);
-    auto endTimeList = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::micro> timeTakenList = endTimeList - startTimeList;
+    gettimeofday(&end, NULL);
+    double timeTakenList = (end.tv_sec - start.tv_sec);
+    timeTakenList = (timeTakenList + (end.tv_usec - start.tv_usec));
 
-    // Medir tiempo de ordenamiento del vector
-    auto startTimeDeque = std::chrono::high_resolution_clock::now();
+    // Medir tiempo de ordenamiento de la deque
+    gettimeofday(&start, NULL);
     p.mergeSort(myDeque);
-    auto endTimeDeque = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::micro> timeTakenDeque = endTimeDeque - startTimeDeque;
-
+    gettimeofday(&end, NULL);
+    double timeTakenDeque = (end.tv_sec - start.tv_sec);
+    timeTakenDeque = (timeTakenDeque + (end.tv_usec - start.tv_usec));
+    
+    std::cout << "After: ";
     printList(myList);
 
-    std::cout << "Time to process a range of " << argc - 1 << " elements with std::list: " << timeTakenList.count() << " us" << std::endl;
-    std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque: " << timeTakenDeque.count() << " us" << std::endl;
+    std::cout << "Time to process a range of " << argc - 1 << " elements with std::list: " << timeTakenList << " us" << std::endl;
+    std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque: " << timeTakenDeque << " us" << std::endl;
 
     return 0;
 

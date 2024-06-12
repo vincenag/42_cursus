@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:38:15 by agvincen          #+#    #+#             */
-/*   Updated: 2024/06/06 13:35:35 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/06/12 10:50:29 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <string>
 # include <list>
 # include <algorithm>
-# include <chrono>
 # include <deque>
 
 
@@ -34,7 +33,7 @@ class PmergeMe {
             if (lst.size() <= 1)
                 return;
 
-            auto mid = lst.begin();
+            typename Container::iterator mid = lst.begin();
             std::advance(mid, lst.size() / 2);
 
             Container left(lst.begin(), mid);
@@ -53,28 +52,28 @@ class PmergeMe {
         template <typename Container>
         Container merge(const Container &left, const Container &right){
             Container merged;
-            auto i = left.begin(), j = right.begin();
+            typename Container::const_iterator i = left.begin(), j = right.begin();
 
             while (i != left.end() && j != right.end()) {
                 if (*i <= *j) {
-                    merged.emplace_back(*i++);
+                    merged.push_back(*i++);
                 } else {
-                    merged.emplace_back(*j++);
+                    merged.push_back(*j++);
                 }
             }
 
             while (i != left.end()) {
-                merged.emplace_back(*i++);
+                merged.push_back(*i++);
             }
 
             while (j != right.end()) {
-                merged.emplace_back(*j++);
+                merged.push_back(*j++);
             }
 
             return merged;
         }
 };
 
-template void PmergeMe::mergeSort<std::list<int>>(std::list<int> &lst);
-template void PmergeMe::mergeSort<std::deque<int>>(std::deque<int> &lst);
+template void PmergeMe::mergeSort<std::list<int> >(std::list<int> &lst);
+template void PmergeMe::mergeSort<std::deque<int> >(std::deque<int> &lst);
 #endif
