@@ -6,7 +6,7 @@
 /*   By: agvincen <agvincen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:28:14 by agvincen          #+#    #+#             */
-/*   Updated: 2024/06/12 11:49:25 by agvincen         ###   ########.fr       */
+/*   Updated: 2024/06/13 11:35:54 by agvincen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 
 bool isInt(const std::string &s) {
     for (size_t i = 0; i < s.length(); i++) {
-        if (s[i] == '-' && i == 0)
-            continue;
         if (!isdigit(s[i]))
             return false;
     }
