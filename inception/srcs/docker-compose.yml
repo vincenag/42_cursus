@@ -1,0 +1,15 @@
+services:
+  mariadb:
+    build: .
+    container_name: mariadb_container
+    restart: always
+    env_file: .env
+    volumes:
+      - mariadb_vol:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - my_network
+
+volumes:
+  mariadb_vol:
