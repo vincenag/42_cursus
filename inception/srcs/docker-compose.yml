@@ -1,6 +1,7 @@
 services:
   mariadb:
-    build: .
+    build:
+      context: ./requirements/mariadb
     container_name: mariadb_container
     restart: always
     env_file: .env
@@ -10,6 +11,50 @@ services:
       - "3306:3306"
     networks:
       - my_network
+  nginx:
+    build: 
+      context: ./requirements/nginx
+    container_name: nginx_container
+    restart: always
+    env_file: .env
+    ports:
+      - "443:443"
+    volumes:
+      - wordpress_vol:/var/www/html
+    depends_on:
+      - wordpress
+    networks:
+      - my_network
+  wordpress:
+    build:
+      context: ./requirements/wordpress
+    container_name: wordpress_container
+    restart: always
+    env_file: .env
+    volumes:
+      - wordpress_vol:/var/www/html
+    depends_on:
+      - mariadb
+    networks:
+      - my_network
 
 volumes:
   mariadb_vol:
+    name: mariadb_vol
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/c/Users/Asus/Desktop/mariadb
+      o: bind
+  wordpress_vol:
+    name: wordpress_vol
+    driver: local
+    driver_opts:
+      type: none
+      device: /mnt/c/Users/Asus/Desktop/wordpress
+      o: bind
+
+networks:
+  my_network:
+    name: my_network
+    driver: bridge

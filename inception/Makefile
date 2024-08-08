@@ -9,6 +9,8 @@ DC_STOP = $(DC) stop
 DC_RM = $(DC) rm -f
 DC_RESTART = $(DC) restart
 
+all: up
+
 # Ejecutar Docker Compose y construir servicios
 up:
 	$(DC_UP)
