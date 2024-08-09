@@ -1,10 +1,10 @@
 <?php
 /** The name of the database for WordPress */
-define( 'DB_NAME', __MARIADB_DATABASE__);
+define( 'DB_NAME', '__MARIADB_DATABASE__');
 /** MySQL database username */
-define( 'DB_USER', __MARIADB_USER__);
+define( 'DB_USER', '__MARIADB_USER__');
 /** MySQL database password */
-define( 'DB_PASSWORD', __MARIADB_PASSWORD__);
+define( 'DB_PASSWORD', '__MARIADB_PASSWORD__');
 /** MySQL hostname */
 define( 'DB_HOST', 'mariadb:3306');
 /** Database charset to use in creating database tables. */
