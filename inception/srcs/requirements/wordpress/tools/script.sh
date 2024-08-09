@@ -14,6 +14,10 @@ chmod -R 755 /var/www/html/wordpress
 # Mover el archivo de configuración predefinido a la ubicación correcta
 #cp ../config/wp-config.php /var/www/html/wordpress/wp-config.php
 
+sed -i "s/__MARIADB_DATABASE__/$MARIADB_DATABASE/" /var/www/html/wordpress/wp-config.php
+sed -i "s/__MARIADB_USER__/$MARIADB_USER/" /var/www/html/wordpress/wp-config.php
+sed -i "s/__MARIADB_PASSWORD__/$MARIADB_PASSWORD/" /var/www/html/wordpress/wp-config.php
+
 # Descargar e instalar WP-CLI
 wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 chmod +x wp-cli.phar
