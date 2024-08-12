@@ -37,7 +37,18 @@ wp user create --allow-root $WP_USER $WP_USER_EMAIL --user_pass=$WP_USER_PASSWOR
   --path=/var/www/html/wordpress --url=$DOMAIN_NAME
 
 # Instalar y activar un tema de WordPress
-wp theme install twentytwenty --activate --allow-root --path=/var/www/html/wordpress
+wp theme install astra --activate --allow-root --path=/var/www/html/wordpress
+
+# Instalar y activar plugins para mejorar el diseño y el rendimiento
+wp plugin install elementor wp-smushit wp-super-cache --activate --allow-root --path=/var/www/html/wordpress
+
+# Crear y asignar un menú principal
+wp menu create "Main Menu" --allow-root --path=/var/www/html/wordpress
+wp menu item add-custom main-menu Home https://example.com --allow-root --path=/var/www/html/wordpress
+wp menu location assign main-menu primary --allow-root --path=/var/www/html/wordpress
+
+# Agregar widgets al sidebar
+wp widget add text sidebar-1 --text="Welcome to My Site" --allow-root --path=/var/www/html/wordpress
 
 # Configurar PHP-FPM para escuchar en el puerto 9000
 sed -i 's#listen = /run/php/php7.4-fpm.sock#listen = 9000#g' /etc/php/7.4/fpm/pool.d/www.conf
