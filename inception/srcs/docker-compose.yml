@@ -2,7 +2,7 @@ services:
   mariadb:
     build:
       context: ./requirements/mariadb
-    container_name: mariadb_container
+    container_name: mariadb
     restart: always
     env_file: .env
     volumes:
@@ -12,7 +12,7 @@ services:
   wordpress:
     build:
       context: ./requirements/wordpress
-    container_name: wordpress_container
+    container_name: wordpress
     restart: always
     env_file: .env
     volumes:
@@ -24,7 +24,7 @@ services:
   nginx:
     build: 
       context: ./requirements/nginx
-    container_name: nginx_container
+    container_name: nginx
     restart: always
     env_file: .env
     ports:
