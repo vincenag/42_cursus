@@ -46,37 +46,37 @@ fclean: down stop_containers remove_containers remove_images remove_volumes remo
 
 stop_containers:
 	@echo "Stopping all running containers..."
-	@docker stop $$(docker ps -qa) 2>/dev/null || true
+	@docker stop $$(docker ps -qa) > /dev/null 2>&1 || true
 	@echo "Containers stopped."
 
 remove_containers:
 	@echo "Removing all containers..."
-	@docker rm $$(docker ps -qa) 2>/dev/null || true
+	@docker rm $$(docker ps -qa) > /dev/null 2>&1 || true
 	@echo "Containers removed."
 
 remove_images:
 	@echo "Removing all images..."
-	@docker rmi -f $$(docker images -qa) 2>/dev/null || true
+	@docker rmi -f $$(docker images -qa) > /dev/null 2>&1 || true
 	@echo "Images removed."
 
 remove_volumes:
 	@echo "Removing all volumes..."
-	@docker volume rm $$(docker volume ls -q) 2>/dev/null || true
+	@docker volume rm $$(docker volume ls -q) > /dev/null 2>&1 || true
 	@echo "Volumes removed."
 
 remove_networks:
 	@echo "Removing all networks..."
-	@docker network rm $$(docker network ls -q) 2>/dev/null || true
+	@docker network rm $$(docker network ls -q) > /dev/null 2>&1 || true
 	@echo "Networks removed."
 
 clean_data:
 	@echo "Cleaning data directory..."
-	@sudo rm -rf ~/data/* 2>/dev/null || true
+	@sudo rm -rf ~/data/* > /dev/null 2>&1 || true
 	@echo "Data directory cleaned."
 
 prune_system:
 	@echo "Pruning Docker system..."
-	@docker system prune -af 2>/dev/null || true
+	@docker system prune -af > /dev/null 2>&1 || true
 	@echo "System pruned."
 
 # Reinicia el entorno completamente
