@@ -36,9 +36,6 @@ wp core install --allow-root \
 wp user create --allow-root $WP_USER $WP_USER_EMAIL --user_pass=$WP_USER_PASSWORD \
   --path=/var/www/html/wordpress --url=$DOMAIN_NAME
 
-# Instalar y activar un tema de WordPress
-wp theme install astra --activate --allow-root --path=/var/www/html/wordpress
-
 # Configurar PHP-FPM para escuchar en el puerto 9000
 sed -i 's#listen = /run/php/php7.4-fpm.sock#listen = 9000#g' /etc/php/7.4/fpm/pool.d/www.conf
 
