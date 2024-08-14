@@ -71,12 +71,12 @@ remove_networks:
 
 clean_data:
 	@echo "Cleaning data directory..."
-	@sudo rm -rf ~/data/*
+	@sudo rm -rf ~/data/* 2>/dev/null || true
 	@echo "Data directory cleaned."
 
 prune_system:
 	@echo "Pruning Docker system..."
-	@docker system prune -af
+	@docker system prune -af 2>/dev/null || true
 	@echo "System pruned."
 
 # Reinicia el entorno completamente
