@@ -35,7 +35,6 @@ services:
       - wordpress
     networks:
       - my_network
-
 volumes:
   mariadb_vol:
     driver: local
